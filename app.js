@@ -49,4 +49,4 @@ app.post('/testapi', function(req, res) {
 	})
 })
 
-app.listen(process.env.VCAP_APP_PORT || 3000, process.env.VCAP_APP_HOST || 'localhost')
+app.listen(process.env.PORT || 3000)

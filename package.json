@@ -2,6 +2,9 @@
 	"name": "uDash",
 	"version": "0.0.1",
 	"description": "helping you get around",
+	"scripts": {
+		"start": "node app.js"
+	},
 	"dependencies": {
 		"express": "3.4.7",
 		"jade": "1.1.4",
