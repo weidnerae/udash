@@ -30,7 +30,7 @@ app.get('/', function(req, res){
 	res.render('index')
 })
 
-app.post('/', function(req, res) {
+app.post('/testapi', function(req, res) {
 	var town = req.body.location
 	var search_path = '/v2/search'
 	var url = yelp_url + search_path + '?term=food&location=' + req.body.location
@@ -49,4 +49,4 @@ app.post('/', function(req, res) {
 	})
 })
 
-app.listen(process.env.VCAP_APP_PORT || 3000, process.env.VCAP_APP_HOST || 'localhost');
+app.listen(process.env.VCAP_APP_PORT || 3000, process.env.VCAP_APP_HOST || 'localhost')
