@@ -1,42 +1,50 @@
 //- body.jade
 //- This file provides the HTML body part.
 
-
 body
+  div#widgetmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='widgetmodalLabel', aria-hidden='true')
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          h3 add a widget
+        div.modal-body
+          p This is just a simple demonstration of adding widgets to our canvas!  Type the number of widgets below and then click submit.
+          input.widgetnum(type='input', placeholder='number of widgets')
+        div.modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          button.addwidget-btn.btn.btn-primary(type='button') Add Widgets
   div.container-fluid
     div.row
       div.col-md-2.sidebar
         h2.nav-title udash
         ul.nav.nav-sidebar
           li
-            a.nav-item
+            a#addwidget.nav-item
               span.glyphicon.glyphicon-plus.nav-item-icon
               span.detail-text ADD WIDGET
           li
-            a.nav-item
+            a#wiki.nav-item
               span.glyphicon.glyphicon-comment.nav-item-icon
               span.detail-text LOCAL WIKI
           li
-            a.nav-item
+            a#school.nav-item
               span.glyphicon.glyphicon-pencil.nav-item-icon
               span.detail-text SCHOOL
           li
-            a.nav-item
+            a#login.nav-item
               span.glyphicon.glyphicon-user.nav-item-icon
               span.detail-text LOG IN
       div.col-md-10.col-md-offset-2.main
+        // plain html in jade can't be indented
         <div class="gridster">
         <ul>
-        <li data-row="1" data-col="1" data-sizex="2" data-sizey="2"><header>|||</header>0</li>
-        <li data-row="1" data-col="3" data-sizex="1" data-sizey="2"><header>|||</header>1</li>
-        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"><header>|||</header>2</li>
+        <li data-row="1" data-col="1" data-sizex="6" data-sizey="2"><header>|||</header>0</li>
         <li data-row="3" data-col="2" data-sizex="3" data-sizey="1"><header>|||</header>3</li>
         <li data-row="4" data-col="1" data-sizex="1" data-sizey="1"><header>|||</header>4</li>
         <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"><header>|||</header>5</li>
         <li data-row="4" data-col="2" data-sizex="1" data-sizey="1"><header>|||</header>6</li>
         <li data-row="5" data-col="2" data-sizex="1" data-sizey="1"><header>|||</header>7</li>
         <li data-row="4" data-col="4" data-sizex="1" data-sizey="1"><header>|||</header>8</li>
-        <li data-row="1" data-col="5" data-sizex="1" data-sizey="3"><header>|||</header>9</li>
         </ul>
         </div>
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
