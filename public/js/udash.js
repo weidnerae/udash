@@ -20,8 +20,12 @@ $(function(){
     for (i = 0; i < numwidgets; i++) {
       gridster.add_widget("<li class='new'><header>|||</header><p>I am a brand new widget.  Gosh, I feel so fresh and so clean.  Won't you drag me around?</p></li>", 1, 2);
     }
+    // stupid hacky shit from below for the newly added widgets
     $('.gs_w').css('background-color', '#DDD');
+    // manually hide the modal
     $('#widgetmodal').modal('hide');
+    // clear the input for next opening
+    $('.widgetnum').val('');
   });
 
   // awful hacky shit because the god damn css provided with the gridster demo
