@@ -118,11 +118,7 @@ body {
   transition: opacity .6s; }
 
 .gridster .gs-w {
-  background: #DDD;
-  cursor: pointer; }
-
-.gs-w {
-  background: #DDD;
+  background-color: #DDD;
   cursor: pointer; }
 
 .gridster .player {
