@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
   margin-left: -20px; }
   .nav-sidebar li {
-    padding: 10px 0 10px 0; }
+    margin: 10px 0 10px 0; }
     .nav-sidebar li a {
       padding-right: 20px;
       padding-left: 20px; }

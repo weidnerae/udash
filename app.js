@@ -45,7 +45,7 @@ app.post('/testapi', function(req, res) {
 									location: businesses[i].location
 								}
 		}
-		res.end(JSON.stringify(info))
+		res.end(JSON.stringify(body));
 	})
 })
 
