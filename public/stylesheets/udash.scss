@@ -17,6 +17,16 @@
   transform: translateY(-50%);
 }
 
+/*
+ * icons
+ */
+.svg {
+  fill: $accent-color;
+  color: $accent-color;
+  height: 48px;
+  width: 48px;
+}
+
 
 /*
  * modify general elements for whole website
@@ -65,6 +75,10 @@ h1,h2,h3,h4,h5,h6 {
         color: black;
         background-color: $accent-color;
         cursor: pointer;
+
+        .svg {
+          fill: black;
+        }
       }
     }
   }
@@ -85,85 +99,4 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 14px;
   font-family: $main-font;
   padding-right: 10px;
-}
-.nav-item-icon {
-  //float: left;
-  text-align:left;
-  padding-left: 10px;
-}
-
-
-/*
- * temporary gridster style for demo/template/starter
- */
-.gridster li header {
-  background: #999;
-  display: block;
-  font-size: 20px;
-  line-height: normal;
-  padding: 4px 0 6px ;
-  margin-bottom: 20px;
-  cursor: move;
-}
-
-.gridster * {
-  margin:0;
-  padding:0;
-}
-
-ul {
-  list-style-type: none;
-}
-
-
-/*/
-/* demo
-/*/
-
-
-body {
-    font-size: 16px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #444;
-    margin: 30px 40px;
-}
-
-.controls {
-    margin-bottom: 20px;
-}
-
-/*/
-/* gridster
-/*/
-
-.gridster ul {
-}
-
-.gridster li {
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    line-height: 100%;
-}
-.gridster {
-    margin: 0 auto;
-
-    opacity: .8;
-
-    -webkit-transition: opacity .6s;
-    -moz-transition: opacity .6s;
-    -o-transition: opacity .6s;
-    -ms-transition: opacity .6s;
-    transition: opacity .6s;
-}
-.gridster .gs-w {
-    background-color: #DDD;
-    cursor: pointer;
-}
-.gridster .player {
-    background: #BBB;
-}
-.gridster .preview-holder {
-    border: none!important;
-    background: red!important;
 }
