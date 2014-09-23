@@ -17,16 +17,6 @@
   transform: translateY(-50%);
 }
 
-/*
- * icons
- */
-.svg {
-  fill: $accent-color;
-  color: $accent-color;
-  height: 48px;
-  width: 48px;
-}
-
 
 /*
  * modify general elements for whole website
@@ -76,8 +66,8 @@ h1,h2,h3,h4,h5,h6 {
         background-color: $accent-color;
         cursor: pointer;
 
-        .svg {
-          fill: black;
+        .glyphicon {
+          color: black;
         }
       }
     }

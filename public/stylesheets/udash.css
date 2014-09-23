@@ -5,15 +5,6 @@
  * mixins
  */
 /*
- * icons
- */
-.svg {
-  fill: #E0E0E0;
-  color: #E0E0E0;
-  height: 48px;
-  width: 48px; }
-
-/*
  * modify general elements for whole website
  */
 h1, h2, h3, h4, h5, h6 {
@@ -55,8 +46,8 @@ h1, h2, h3, h4, h5, h6 {
         color: black;
         background-color: #E0E0E0;
         cursor: pointer; }
-        .nav-sidebar li a:hover .svg {
-          fill: black; }
+        .nav-sidebar li a:hover .glyphicon {
+          color: black; }
 
 .nav-item {
   clear: both;
