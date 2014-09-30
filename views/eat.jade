@@ -1,0 +1,19 @@
+// eat.jade, provides example for how to implement other views
+
+doctype html
+html
+  // can't forget that css goodness, so include the head
+  include head
+  body
+    // standard creation of container
+    div.container-fluid
+      // standard creation of bootstrap row
+      div.row
+        // include our sidebar.jade
+        include sidebar.jade
+        // now we have the actual main content area below
+        div.col-md-10.col-md-offset-2.main
+          p we eatin'
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(src="js/udash.js")

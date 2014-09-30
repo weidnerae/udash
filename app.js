@@ -31,6 +31,14 @@ app.get('/', function(req, res){
 	res.render('index')
 })
 
+app.get('/eat', function(req, res) {
+	res.render('eat')
+})
+
+app.get('/drink', function(req, res) {
+	res.render('drink')
+})
+
 app.post('/testapi', function(req, res) {
 	var town = req.body.location
 	var search_path = '/v2/search'

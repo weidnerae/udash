@@ -4,29 +4,7 @@
 body
   div.container-fluid
     div.row
-      div.col-md-2.sidebar
-        h2.nav-title udash
-        ul.nav.nav-sidebar
-          li
-            a#eat.nav-item
-              span.glyphicon.glyphicon-cutlery
-              span.detail-text EAT
-          li
-            a#drink.nav-item
-              span.glyphicon.glyphicon-glass
-              span.detail-text DRINK
-          li
-            a#explore.nav-item
-              span.glyphicon.glyphicon-send
-              span.detail-text EXPLORE
-          li
-            a#learn.nav-item
-              span.glyphicon.glyphicon-pencil
-              span.detail-text LEARN
-          li
-            a#calendar.nav-item
-              span.glyphicon.glyphicon-calendar
-              span.detail-text CALENDAR
+      include sidebar.jade
       div.col-md-10.col-md-offset-2.main
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
   script(src="//cdn.jsdelivr.net/gridster.js/0.1/jquery.gridster.min.js")
