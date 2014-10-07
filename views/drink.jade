@@ -9,6 +9,11 @@ html
         include sidebar.jade
         div.col-md-10.col-md-offset-2.main
           p we drinkin'
+          table
+            each r, i in rest
+              tr
+                td #{r}
+                td #{r_locations[i]}
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
     script(src="js/udash.js")

@@ -32,11 +32,37 @@ app.get('/', function(req, res){
 })
 
 app.get('/eat', function(req, res) {
-	res.render('eat')
+	var town = "boone, nc"
+	var search_path = '/v2/search'
+	var url = yelp_url + search_path + '?term=food&location=' + town
+	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
+		var businesses = body.businesses
+		var rest = []
+		var r_locations = []
+		for (var i = 0; i < businesses.length; i++) {
+			rest[i] = businesses[i].name
+			r_locations[i] = businesses[i].location.display_address;
+			console.log(JSON.stringify(businesses[i].categories))
+		}
+		res.render('eat', {rest: rest, r_locations: r_locations})
+	})
 })
 
 app.get('/drink', function(req, res) {
-	res.render('drink')
+	var town = "boone, nc"
+	var search_path = '/v2/search'
+	var url = yelp_url + search_path + '?term=food&location=' + town
+	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
+		var businesses = body.businesses
+		var rest = []
+		var r_locations = []
+		for (var i = 0; i < businesses.length; i++) {
+			rest[i] = businesses[i].name
+			r_locations[i] = businesses[i].location.display_address;
+			console.log(JSON.stringify(businesses[i].categories))
+		}
+		res.render('drink', {rest: rest, r_locations: r_locations})
+	})
 })
 
 app.post('/testapi', function(req, res) {
@@ -54,7 +80,7 @@ app.post('/testapi', function(req, res) {
 									location: businesses[i].location
 								}
 		}
-		res.end(JSON.stringify(body));
+		res.end(JSON.stringify(body))
 	})
 })
 
