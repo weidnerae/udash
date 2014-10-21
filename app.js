@@ -1,5 +1,6 @@
-var express = require('express')
-var request = require('request')
+var express  = require('express')
+var request  = require('request')
+var Cloudant = require('cloudant')
 
 // setup middleware
 // testing github crap
@@ -18,13 +19,42 @@ var token = '9O7nuodRovArOdoJwOESz9O4BL4xaX2m'
 var token_secret = 'M0fk8as_3vsanFkMxeTEf8FpduE'
 // yelp request url shit
 var yelp_url = 'http://api.yelp.com'
-
+// yelp oauth shit
 var oauth = {
 	consumer_key: consumer_key,
 	consumer_secret: consumer_secret,
 	token: token,
 	token_secret: token_secret
 }
+
+// cloudant database stuff!
+var me = 'weidnerae'
+var password = 'hundred100' // i beg of you to please not abuse my bad programming practices of not passing the password in via environment variables
+
+// initialize connection to cloudant
+Cloudant({account:me, password:password}, function(er, cloudant) {
+	console.log('========== CONNECTING TO CLOUDANT ==========')
+	if (er)
+		return console.log("Error connecting to cloudant account: %s: %s", me, er.message)
+
+	console.log("Connected to cloudant account: %s", me)
+
+	cloudant.ping(function(er, reply) {
+		if (er)
+			return console.log('Failed to ping cloudant, did your network just go down?')
+
+		console.log('Server version = %s', reply.version)
+		console.log('I am %s and my roles are %j', reply.userCtx.name, reply.userCtx.roles)
+
+		cloudant.db.list(function(er, all_dbs) {
+			if (er)
+				return console.log('Error listing all databases: %s', er.message)
+
+				console.log('Databases: %s', all_dbs.join(','))
+				console.log('========== DONE CONNECTING TO CLOUDANT =========')
+		})
+	})
+})
 
 // render index page
 app.get('/', function(req, res){
@@ -41,9 +71,38 @@ app.get('/eat', function(req, res) {
 		var r_locations = []
 		for (var i = 0; i < businesses.length; i++) {
 			rest[i] = businesses[i].name
-			r_locations[i] = businesses[i].location.display_address;
+			r_locations[i] = businesses[i].location.display_address
 			console.log(JSON.stringify(businesses[i].categories))
 		}
+
+		// every time we want to access the cloudant databases we need to use the Cloudant object to authenticate and then access the databases
+		// in the callback function
+		Cloudant({account:me, password:password}, function(er, cloudant) {
+			// since we are testing, start by trying to destroy the db we created previously
+			cloudant.db.destroy('test_food_deals', function() {
+				// go ahead and re-create it
+				cloudant.db.create('test_food_deals', function() {
+					// select the database we want to input into
+					var test_food_deals = cloudant.use('test_food_deals')
+
+					// insert data into database
+					test_food_deals.insert({restaurants: rest}, 'restaurants', function(err, body, header) {
+						if (err)
+							return console.log('[test_food_details.insert] ' + err.message)
+
+						console.log('Inserted restaurant information into cloudant database')
+					})
+
+					test_food_deals.insert({locations: r_locations}, 'restaurant_locations', function(err, body, header) {
+						if (err)
+							return console.log('[test_food_details.insert] ' + err.message)
+
+						console.log('Inserted restaurant location information into cloudant database')
+					})
+				})
+			})
+		})
+		// finally, render the eat page
 		res.render('eat', {rest: rest, r_locations: r_locations})
 	})
 })
@@ -58,7 +117,7 @@ app.get('/drink', function(req, res) {
 		var r_locations = []
 		for (var i = 0; i < businesses.length; i++) {
 			rest[i] = businesses[i].name
-			r_locations[i] = businesses[i].location.display_address;
+			r_locations[i] = businesses[i].location.display_address
 			console.log(JSON.stringify(businesses[i].categories))
 		}
 		res.render('drink', {rest: rest, r_locations: r_locations})
