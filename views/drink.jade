@@ -1,19 +1,52 @@
-// drink.jade
-
 doctype html
 html
   include head
-  body
-    div.container-fluid
-      div.row
-        include sidebar.jade
-        div.col-md-10.col-md-offset-2.main
-          p we drinkin'
-          table
-            each r, i in rest
-              tr
-                td #{r}
-                td #{r_locations[i]}
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
-    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
-    script(src="js/udash.js")
+  body(unresolved)
+    link(rel="import", href="/polymer/polymer.html")
+    link(rel="import", href="/core-toolbar/core-toolbar.html")
+    link(rel="import", href="/core-menu/core-menu.html")
+    link(rel="import", href="/core-item/core-item.html")
+    link(rel="import", href="/core-header-panel/core-header-panel.html")
+    link(rel="import", href="/core-drawer-panel/core-drawer-panel.html")
+    link(rel="import", href="/core-icons/core-icons.html")
+    link(rel="import", href="/paper-icon-button/paper-icon-button.html")
+    core-drawer-panel#nav
+      core-header-panel(drawer)
+        core-toolbar#navheader
+          span Navigation
+        core-menu
+          core-item#eat(label="eat")
+            a(href="/eat")
+          core-item#drink(label="drink")
+            a(href="/drink")
+          core-item#explore(label="explore")
+          core-item#learn(label="learn")
+          core-item#calendar(label="calendar")
+      core-header-panel(main)
+        core-toolbar#mainheader
+          paper-icon-button#navicon(icon="menu")
+          span(flex) udash
+        div.content drink drink drink
+
+
+
+
+//- // drink.jade
+//-
+//- doctype html
+//- html
+//-   include head
+//-   body
+//-     div.container-fluid
+//-       div.row
+//-         include sidebar.jade
+//-         div.col-md-10.col-md-offset-2.main
+//-           p we drinkin'
+//-           table
+//-             each r, i in rest
+//-               tr
+//-                 td #{r}
+//-                 td #{r_locations[i]}
+//-     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+//-     script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+//-     script(src="js/udash.js")

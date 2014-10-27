@@ -1,69 +1,21 @@
-/*
- * global variables
- */
-/*
- * mixins
- */
-/*
- * modify general elements for whole website
- */
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-  margin: 0px; }
+body {
+  font-family: sans-serif; }
 
-/*
- * Sidebar
- */
-/* Hide for mobile, show later */
-.sidebar {
+core-header-panel {
+  background: white; }
+
+core-toolbar {
+  background-color: #03A9F4; }
+
+#navheader {
+  background-color: #56BA89; }
+
+.content {
+  padding: 20px; }
+
+/* drawer is always visible on a wide screen
+   so menu button isn't required */
+core-drawer-panel:not([narrow]) #navicon {
   display: none; }
-
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
-    background-color: black;
-    border-right: 1px solid #eee; } }
-.nav-sidebar {
-  margin-right: -21px;
-  /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px; }
-  .nav-sidebar li {
-    margin: 10px 0 10px 0; }
-    .nav-sidebar li a {
-      padding-right: 20px;
-      padding-left: 20px; }
-      .nav-sidebar li a:hover {
-        color: black;
-        background-color: #E0E0E0;
-        cursor: pointer; }
-        .nav-sidebar li a:hover .glyphicon {
-          color: black; }
-
-.nav-item {
-  clear: both;
-  color: #E0E0E0;
-  font-size: 24px; }
-
-.nav-title {
-  color: #E0E0E0;
-  padding: 10px 0 10px 0;
-  font-family: Quantico; }
-
-.detail-text {
-  float: right;
-  padding-top: 8px;
-  font-size: 14px;
-  font-family: Quantico;
-  padding-right: 10px; }
 
 /*# sourceMappingURL=udash.css.map */

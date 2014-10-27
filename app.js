@@ -9,6 +9,7 @@ app.use(express.bodyParser())
 app.use(app.router)
 app.use(express.errorHandler())
 app.use(express.static(__dirname + '/public')) //setup static public directory
+app.use(express.static(__dirname + '/bower_components'))
 app.set('view engine', 'jade')
 app.set('views', __dirname + '/views') //optional since express defaults to CWD/views
 
