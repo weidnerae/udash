@@ -9,8 +9,11 @@ core-toolbar {
 
 #navheader {
   background-color: #56BA89; }
+  #navheader span {
+    width: 100%;
+    text-align: right; }
 
-.content {
+#view {
   padding: 20px; }
 
 /* drawer is always visible on a wide screen

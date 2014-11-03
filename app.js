@@ -76,35 +76,35 @@ app.get('/eat', function(req, res) {
 			console.log(JSON.stringify(businesses[i].categories))
 		}
 
-		// every time we want to access the cloudant databases we need to use the Cloudant object to authenticate and then access the databases
-		// in the callback function
-		Cloudant({account:me, password:password}, function(er, cloudant) {
-			// since we are testing, start by trying to destroy the db we created previously
-			cloudant.db.destroy('test_food_deals', function() {
-				// go ahead and re-create it
-				cloudant.db.create('test_food_deals', function() {
-					// select the database we want to input into
-					var test_food_deals = cloudant.use('test_food_deals')
-
-					// insert data into database
-					test_food_deals.insert({restaurants: rest}, 'restaurants', function(err, body, header) {
-						if (err)
-							return console.log('[test_food_details.insert] ' + err.message)
-
-						console.log('Inserted restaurant information into cloudant database')
-					})
-
-					test_food_deals.insert({locations: r_locations}, 'restaurant_locations', function(err, body, header) {
-						if (err)
-							return console.log('[test_food_details.insert] ' + err.message)
-
-						console.log('Inserted restaurant location information into cloudant database')
-					})
-				})
-			})
-		})
+		// // every time we want to access the cloudant databases we need to use the Cloudant object to authenticate and then access the databases
+		// // in the callback function
+		// Cloudant({account:me, password:password}, function(er, cloudant) {
+		// 	// since we are testing, start by trying to destroy the db we created previously
+		// 	cloudant.db.destroy('test_food_deals', function() {
+		// 		// go ahead and re-create it
+		// 		cloudant.db.create('test_food_deals', function() {
+		// 			// select the database we want to input into
+		// 			var test_food_deals = cloudant.use('test_food_deals')
+		//
+		// 			// insert data into database
+		// 			test_food_deals.insert({restaurants: rest}, 'restaurants', function(err, body, header) {
+		// 				if (err)
+		// 					return console.log('[test_food_details.insert] ' + err.message)
+		//
+		// 				console.log('Inserted restaurant information into cloudant database')
+		// 			})
+		//
+		// 			test_food_deals.insert({locations: r_locations}, 'restaurant_locations', function(err, body, header) {
+		// 				if (err)
+		// 					return console.log('[test_food_details.insert] ' + err.message)
+		//
+		// 				console.log('Inserted restaurant location information into cloudant database')
+		// 			})
+		// 		})
+		// 	})
+		// })
 		// finally, render the eat page
-		res.render('eat', {rest: rest, r_locations: r_locations})
+		res.json({locations: r_locations, restaurants: rest})
 	})
 })
 
@@ -121,7 +121,7 @@ app.get('/drink', function(req, res) {
 			r_locations[i] = businesses[i].location.display_address
 			console.log(JSON.stringify(businesses[i].categories))
 		}
-		res.render('drink', {rest: rest, r_locations: r_locations})
+		res.json({rest: rest, r_locations: r_locations})
 	})
 })
 
