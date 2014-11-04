@@ -47,7 +47,7 @@
   @type Array
   @default []
 -->
-<polymer-element name="post-service" attributes="posts">
+<polymer-element name="deal-service" attributes="restaurants">
   <template>
     <style>
     :host {
@@ -56,19 +56,21 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="../api/posts.json"
-      on-core-response="{{postsLoaded}}"
+      url="/eat"
+      on-core-response="{{dealsLoaded}}"
       handleAs="json">
     </core-ajax>
   </template>
   <script>
-  Polymer('post-service', {
+  Polymer('deal-service', {
     created: function() {
-      this.posts = [];
+      this.restaurants = [];
     },
-    postsLoaded: function() {
+    dealsLoaded: function() {
       // Make a copy of the loaded data
-      this.posts = this.$.ajax.response.slice(0);
+      this.restaurants = this.$.ajax.response;
+      console.log("restaurant list from deal-serivce.html: ");
+      console.log(this.restaurants);
     },
     /**
      * Update the service with the current favorite value.

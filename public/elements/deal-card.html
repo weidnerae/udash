@@ -1,7 +1,7 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/core-icon-button/core-icon-button.html">
 
-<polymer-element name="post-card">
+<polymer-element name="deal-card">
   <template>
     <style>
     :host {
@@ -46,25 +46,12 @@
 
     </div>
 
-    <core-icon-button
-      id="favicon"
-      icon="favorite"
-      on-tap="{{favoriteTapped}}">
-    </core-icon-button>
-
     <content></content>
   </template>
   <script>
   Polymer({
-    publish: {
-      favorite: {
-        value: false,
-        reflect: true
-      }
-    },
-    favoriteTapped: function(event, detail, sender) {
-      this.favorite = !this.favorite;
-      this.fire('favorite-tap');
+    created: function() {
+      console.log("deal card has been created");
     }
   });
   </script>

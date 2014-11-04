@@ -68,12 +68,10 @@ app.get('/eat', function(req, res) {
 	var url = yelp_url + search_path + '?term=food&location=' + town
 	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
 		var businesses = body.businesses
-		var rest = []
-		var r_locations = []
+		var restaurants = []
 		for (var i = 0; i < businesses.length; i++) {
-			rest[i] = businesses[i].name
-			r_locations[i] = businesses[i].location.display_address
-			console.log(JSON.stringify(businesses[i].categories))
+			restaurants[i] = { name: businesses[i].name, location: businesses[i].location.display_address, avatar: "/images/avatar-01.svg" };
+			console.log(JSON.stringify(restaurants[i]))
 		}
 
 		// // every time we want to access the cloudant databases we need to use the Cloudant object to authenticate and then access the databases
@@ -104,7 +102,7 @@ app.get('/eat', function(req, res) {
 		// 	})
 		// })
 		// finally, render the eat page
-		res.json({locations: r_locations, restaurants: rest})
+		res.json(restaurants)
 	})
 })
 
