@@ -142,4 +142,13 @@ app.post('/testapi', function(req, res) {
 	})
 })
 
+app.get('/dailyfooddeals', function(req, res) {
+	res.json([ { logo: "/images/avatar-01.svg",
+							 deal: "this is a deal!!!!!!",
+							 name: "business name"},
+						 { logo: "/images/avatar-01.svg",
+						   deal: "2 for 1 drinkz",
+							 name: "town tavern"} ])
+})
+
 app.listen(process.env.PORT || 3000)

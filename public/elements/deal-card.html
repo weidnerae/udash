@@ -7,50 +7,52 @@
     :host {
       display: block;
       position: relative;
-      background-color: white;
-      padding: 20px;
-      width: 100%;
-      font-size: 1.2rem;
-      font-weight: 300;
+      margin: 5px 10px 5px 10px;
     }
-    .card-header {
-      margin-bottom: 10px;
+    .card {
     }
-    polyfill-next-selector { content: '.card-header h2'; }
-    .card-header ::content h2 {
+    polyfill-next-selector { content: '.card h2'; }
+    .card ::content h2 {
       margin: 0;
-      font-size: 1.8rem;
-      font-weight: 300;
-    }
-    polyfill-next-selector { content: '.card-header img'; }
-    .card-header ::content img {
-      width: 70px;
-      border-radius: 50%;
-      margin: 10px;
-    }
-    core-icon-button {
+      font-size: 1rem;
       position: absolute;
-      top: 3px;
-      right: 3px;
-      color: #636363;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      color: white;
+      background-color: rgba(0,0,0,.7);
+      text-align: center;
     }
-    :host([favorite]) core-icon-button {
-      color: #da4336;
+    polyfill-next-selector { content: '.card img'; }
+    .card ::content img {
+      max-height: 150px;
+      max-width: 150px;
+    }
+    polyfill-next-selector { content: '.card span'; }
+    .card ::content span {
+      margin: 0;
+      font-size: 1rem;
+      position: absolute;
+      top: 100px;
+      left: 0px;
+      width: 100%;
+      color: white;
+      background-color: rgba(0,0,0,.7);
     }
     </style>
 
-    <div class="card-header" layout horizontal center>
 
+    <div class="card" layout center vertical>
       <content select="img"></content>
+
       <content select="h2"></content>
+      <content select="span"></content>
 
     </div>
-
-    <content></content>
   </template>
   <script>
   Polymer({
-    created: function() {
+    ready: function() {
       console.log("deal card has been created");
     }
   });

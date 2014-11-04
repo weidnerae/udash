@@ -1,0 +1,30 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/elements/food-deal-service.html">
+<link rel="import" href="/elements/deal-card.html">
+
+<polymer-element name="food-deal-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      width: 100%;
+      min-height: 200px;
+    }
+    </style>
+
+    <food-deal-service id="service" deals="{{deals}}"></food-deal-service>
+
+    <div layout horizontal wrap style="width: 100%">
+      <template repeat="{{d in deals}}">
+        <deal-card>
+          <img src="{{d.logo}}" width="150" height="150">
+          <h2>{{d.name}}</h2>
+          <span>{{d.deal}}</span>
+        </deal-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>
