@@ -1,6 +1,7 @@
 var express  = require('express')
 var request  = require('request')
 var Cloudant = require('cloudant')
+var config   = require('./config.json')
 
 // setup middleware
 // testing github crap
@@ -29,8 +30,8 @@ var oauth = {
 }
 
 // cloudant database stuff!
-var me = 'weidnerae'
-var password = 'hundred100' // i beg of you to please not abuse my bad programming practices of not passing the password in via environment variables
+var me = config.username
+var password = config.password // i beg of you to please not abuse my bad programming practices of not passing the password in via environment variables
 
 // initialize connection to cloudant
 Cloudant({account:me, password:password}, function(er, cloudant) {
