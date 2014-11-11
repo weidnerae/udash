@@ -1,6 +1,7 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/core-ajax/core-ajax.html">
-<polymer-element name="deal-service" attributes="deals">
+
+<polymer-element name="biz-service" attributes="bizs">
   <template>
     <style>
     :host {
@@ -9,20 +10,20 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="/deals"
-      on-core-response="{{dealsLoaded}}"
+      url="/bizs"
+      on-core-response="{{bizsLoaded}}"
       handleAs="json">
     </core-ajax>
   </template>
   <script>
-  Polymer('deal-service', {
+  Polymer('biz-service', {
     created: function() {
-      this.deals = [];
+      this.bizs = [];
     },
     dealsLoaded: function() {
       // Make a copy of the loaded data
-      this.deals = this.$.ajax.response;
-      console.log("got deals from /deals");
+      this.bizs = this.$.ajax.response;
+      console.log("got bizs from /bizs");
     }
   });
   </script>

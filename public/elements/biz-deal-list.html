@@ -1,0 +1,25 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/elements/deal-list.html">
+
+<polymer-element name="biz-deal-list" attributes="day deals bizs">
+  <template>
+    <style>
+    :host {
+    }
+    </style>
+
+    <div>
+      <template repeat="{{d in deals}}">
+        <template if="{{d.day == day}}">
+          <deal-card>
+            <span>{{d.text}}</span>
+          </deal-card>
+        </template>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>

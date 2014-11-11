@@ -21,12 +21,5 @@ core-toolbar {
 /* drawer is always visible on a wide screen
    so menu button isn't required */
 core-drawer-panel:not([narrow]) #navicon {
-  display: none; }
-
-paper-tabs::shadow #selectionBar {
-  background-color: yellow; }
-
-paper-tabs paper-tab::shadow #ink {
-  color: yellow; }
-
-/*# sourceMappingURL=udash.css.map */
+  display: none;
+}

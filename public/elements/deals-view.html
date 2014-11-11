@@ -1,0 +1,78 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/paper-tabs/paper-tab.html">
+<link rel="import" href="/paper-tabs/paper-tabs.html">
+<link rel="import" href="/core-pages/core-pages.html">
+<link rel="import" href="/elements/deal-service.html">
+<link rel="import" href="/elements/biz-servce.html">
+<link rel="import" href="/elements/biz-deal-list.html">
+
+<polymer-element name="deals-view" attributes="selected">
+  <template>
+    <style>
+    :host {
+      margin: 0px;
+      padding: 0px;
+    }
+    paper-tabs::shadow #selectionBar {
+      background-color: yellow;
+    }
+    paper-tabs paper-tab::shadow #ink {
+      color: yellow;
+    }
+    </style>
+
+    <deal-service id="deals" deals="{{deals}}"></deal-service>
+    <biz-service id="bizs" bizs="{{bizs}}"></biz-service>
+
+    <div>
+      <paper-tabs selected="{{selected}}">
+        <paper-tab onClick="{{loadSun}}">sunday</paper-tab>
+        <paper-tab onClick="{{loadMon}}">monday</paper-tab>
+        <paper-tab onClick="{{loadTue}}">tuesday</paper-tab>
+        <paper-tab onClick="{{loadWed}}">wednesday</paper-tab>
+        <paper-tab onClick="{{loadThu}}">thursday</paper-tab>
+        <paper-tab onClick="{{loadFri}}">friday</paper-tab>
+        <paper-tab onClick="{{loadSat}}">saturday</paper-tab>
+      </paper-tabs>
+
+      <core-pages selected="{{selected}}">
+        <div><biz-deal-list day="sunday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="monday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="tuesday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="wednesday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="thursday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="friday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="saturday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+      </core-pages>
+    </div>
+  </template>
+
+  <script>
+  Polymer('deals-view', {
+    created: function() {
+      this.selected = new Date().getDay();
+    },
+    loadMon: function() {
+      this.selected = 0;
+    },
+    loadTue: function() {
+      this.selected = 1;
+    },
+    loadWed: function() {
+      this.selected = 2;
+    },
+    loadThu: function() {
+      this.selected = 3;
+    },
+    loadFri: function() {
+      this.selected = 4;
+    },
+    loadSat: function() {
+      this.selected = 5;
+    },
+    loadSun: function() {
+      this.selected = 6;
+    }
+  });
+  </script>
+</polymer-element>

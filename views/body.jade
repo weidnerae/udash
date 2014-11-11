@@ -9,18 +9,19 @@ body(unresolved)
   link(rel="import", href="/core-icons/hardware-icons.html")
   link(rel="import", href="/paper-icon-button/paper-icon-button.html")
   link(rel="import", href="/paper-item/paper-item.html")
+  link(rel="import", href="/elements/deals-view.html")
   core-drawer-panel#nav
     core-header-panel(drawer)
       core-toolbar#navheader
         span udash
       core-menu
-        paper-item#eat(label="eat", icon="maps:local-pizza")
-        paper-item#drink(label="drink", icon="maps:local-bar")
+        paper-item#deals(label="deals", icon="maps:local-pizza")
+        paper-item#places(label="places", icon="maps:local-bar")
         paper-item#explore(label="explore", icon="maps:map")
-        paper-item#learn(label="learn", icon="create")
-        paper-item#calendar(label="calendar", icon="due-date")
+        paper-item#events(label="events", icon="due-date")
     core-header-panel(main)
       core-toolbar#mainheader
         paper-icon-button#navicon(icon="hardware:keyboard-arrow-right")
         span(flex) around boone
-      div#view stuff stuff stuff
+      div#view(class=".deals-active")
+        deals-view
