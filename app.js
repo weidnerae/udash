@@ -31,7 +31,10 @@ var oauth = {
 
 // cloudant database stuff!
 var me = config.username
-var password = config.password // i beg of you to please not abuse my bad programming practices of not passing the password in via environment variables
+var password = config.password
+
+// app specific data structures
+var deals = [];
 
 // initialize connection to cloudant
 Cloudant({account:me, password:password}, function(er, cloudant) {
@@ -143,13 +146,19 @@ app.post('/testapi', function(req, res) {
 	})
 })
 
-app.get('/dailyfooddeals', function(req, res) {
-	res.json([ { logo: "/images/avatar-01.svg",
-							 deal: "this is a deal!!!!!!",
-							 name: "business name"},
-						 { logo: "/images/avatar-01.svg",
-						   deal: "2 for 1 drinkz",
-							 name: "town tavern"} ])
+app.get('/deals', function(req, res) {
+	deals = [];
+	Cloudant({account: me, password: password}, function(error, cloudant) {
+		var db = cloudant.db.use('deals');
+		var i = -1;
+		db.list({ include_docs: true }, function (err, body) {
+			body.rows.forEach(function (element) {
+				deals.push(element.doc)
+			})
+			console.log("deals length: " + deals.length)
+			res.json(deals)
+		})
+	})
 })
 
 app.listen(process.env.PORT || 3000)

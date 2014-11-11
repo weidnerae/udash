@@ -1,6 +1,6 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/core-ajax/core-ajax.html">
-<polymer-element name="food-deal-service" attributes="deals">
+<polymer-element name="deal-service" attributes="deals">
   <template>
     <style>
     :host {
@@ -9,22 +9,21 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="/dailyfooddeals"
+      url="/deals"
       on-core-response="{{dealsLoaded}}"
       handleAs="json">
     </core-ajax>
   </template>
   <script>
-  Polymer('food-deal-service', {
+  Polymer('deal-service', {
     created: function() {
       this.deals = [];
-      console.log(this.deals);
     },
     dealsLoaded: function() {
       // Make a copy of the loaded data
       this.deals = this.$.ajax.response;
       console.log("deals list from deal-service.html: ");
-      console.log(this.deals);
+      console.log(JSON.stringify(this.deals));
     },
     /**
      * Update the service with the current favorite value.

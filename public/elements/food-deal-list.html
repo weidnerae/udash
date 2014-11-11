@@ -1,30 +1,40 @@
 <link rel="import" href="/polymer/polymer.html">
-<link rel="import" href="/elements/food-deal-service.html">
+<link rel="import" href="/elements/deal-service.html">
 <link rel="import" href="/elements/deal-card.html">
 
-<polymer-element name="food-deal-list" attributes="show">
+<polymer-element name="food-deal-list" attributes="day">
   <template>
     <style>
     :host {
-      width: 100%;
-      min-height: 200px;
+    }
+    deal-card {
+      text-align: left;
+    }
+    container {
+      margin: 0px;
     }
     </style>
 
-    <food-deal-service id="service" deals="{{deals}}"></food-deal-service>
+    <deal-service id="service" deals="{{deals}}"></deal-service>
 
-    <div layout horizontal wrap style="width: 100%">
+    <div id="container" layout vertical>
       <template repeat="{{d in deals}}">
-        <deal-card>
-          <img src="{{d.logo}}" width="150" height="150">
-          <h2>{{d.name}}</h2>
-          <span>{{d.deal}}</span>
-        </deal-card>
+        <template if="{{d.day == day}}">
+          <deal-card>
+            <span>{{d.day}} - {{d.place}} : {{d.text}}</span>
+          </deal-card>
+        </template>
       </template>
     </div>
   </template>
 
   <script>
-  Polymer({});
+  Polymer('food-deal-list', {
+    created: function() {
+      var weekday = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+      this.day = weekday[new Date().getDay()];
+      console.log(this.day);
+    }
+  });
   </script>
 </polymer-element>
