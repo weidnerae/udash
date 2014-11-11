@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 .DS_STORE
-/public/stylesheets/.sass-cache
+bower_components/
 config.json
