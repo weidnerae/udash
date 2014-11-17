@@ -1,17 +1,19 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/paper-button/paper-button.html">
+<link rel="import" href="/core-icon/core-icon.html">
 
 <polymer-element name="deal-card">
   <template>
     <style>
     :host {
-      margin: 0;
+      display: block;
+      position: relative;
+      padding: 20px;
+      margin: 2px 5px 2px 5px;
+      text-align: left !important;
     }
     .card {
       background-color: white;
-    }
-    span {
-      text-align: left;
     }
     paper-button {
       width: 400px;
@@ -21,6 +23,7 @@
 
     <div class="card">
       <paper-button raised>
+        <content select="core-icon"></content>
         <content select="span"></content>
       </paper-button>
     </div>

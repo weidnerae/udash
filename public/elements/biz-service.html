@@ -19,8 +19,9 @@
   Polymer('biz-service', {
     created: function() {
       this.bizs = [];
+      console.log("biz-service created");
     },
-    dealsLoaded: function() {
+    bizsLoaded: function() {
       // Make a copy of the loaded data
       this.bizs = this.$.ajax.response;
       console.log("got bizs from /bizs");

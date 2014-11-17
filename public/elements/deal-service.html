@@ -9,7 +9,7 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="/deals"
+      url="/deals2"
       on-core-response="{{dealsLoaded}}"
       handleAs="json">
     </core-ajax>
@@ -23,6 +23,7 @@
       // Make a copy of the loaded data
       this.deals = this.$.ajax.response;
       console.log("got deals from /deals");
+      console.log(JSON.stringify(this.deals));
     }
   });
   </script>

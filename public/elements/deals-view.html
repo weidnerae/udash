@@ -3,15 +3,14 @@
 <link rel="import" href="/paper-tabs/paper-tabs.html">
 <link rel="import" href="/core-pages/core-pages.html">
 <link rel="import" href="/elements/deal-service.html">
-<link rel="import" href="/elements/biz-servce.html">
+<link rel="import" href="/elements/biz-service.html">
 <link rel="import" href="/elements/biz-deal-list.html">
 
 <polymer-element name="deals-view" attributes="selected">
   <template>
     <style>
     :host {
-      margin: 0px;
-      padding: 0px;
+
     }
     paper-tabs::shadow #selectionBar {
       background-color: yellow;
@@ -21,8 +20,8 @@
     }
     </style>
 
-    <deal-service id="deals" deals="{{deals}}"></deal-service>
-    <biz-service id="bizs" bizs="{{bizs}}"></biz-service>
+    <deal-service deals="{{deals}}"></deal-service>
+    <biz-service bizs="{{bizs}}"></biz-service>
 
     <div>
       <paper-tabs selected="{{selected}}">
@@ -36,13 +35,13 @@
       </paper-tabs>
 
       <core-pages selected="{{selected}}">
-        <div><biz-deal-list day="sunday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="monday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="tuesday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="wednesday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="thursday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="friday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="saturday" deals="{{deals}}" bizs={{bizs}}></biz-deal-list></div>
+        <div><biz-deal-list day="Sunday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Monday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Tuesday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Wednesday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Thursday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Friday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
+        <div><biz-deal-list day="Saturday" bizs={{bizs}} deals={{deals}}></biz-deal-list></div>
       </core-pages>
     </div>
   </template>

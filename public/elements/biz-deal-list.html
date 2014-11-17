@@ -1,19 +1,41 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/elements/deal-list.html">
+<link rel="import" href="/paper-button/paper-button.html">
+<link rel="import" href="/core-icon/core-icon.html">
+<link rel="import" href="/core-icons/maps-icons.html">
 
-<polymer-element name="biz-deal-list" attributes="day deals bizs">
+<polymer-element name="biz-deal-list" attributes="day bizs deals">
   <template>
     <style>
     :host {
+      display: block;
+      width: 100%;
+    }
+    .biz-header {
+      height: 75px;
+      width: 50%;
     }
     </style>
 
     <div>
-      <template repeat="{{d in deals}}">
-        <template if="{{d.day == day}}">
-          <deal-card>
-            <span>{{d.text}}</span>
-          </deal-card>
+      <template repeat="{{b in bizs}}">
+        <template if="{{b.deals}}">
+          <paper-button class="biz-header" raised>
+            {{b.name}}
+          </paper-button>
+          <template repeat="{{d in b.deals}}">
+            <template if="{{d.day == day}}">
+              <deal-card>
+                <template if="{{d.drink}}">
+                  <core-icon icon="maps:local-bar"></core-icon>
+                </template>
+                <template if="{{d.eat}}">
+                  <core-icon icon="maps:local-pizza"></core-icon>
+                </template>
+                <span>{{d.text}}</span>
+              </deal-card>
+            </template>
+          </template>
         </template>
       </template>
     </div>

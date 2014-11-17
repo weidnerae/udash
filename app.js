@@ -14,19 +14,14 @@ app.use(express.static(__dirname + '/bower_components'))
 app.set('view engine', 'jade')
 app.set('views', __dirname + '/views') //optional since express defaults to CWD/views
 
-// yelp shit
-var consumer_key = 'nMttGA-pdyXSk20Ady60NQ'
-var consumer_secret = '47R_D2JGjK20j1qmlNyNRRsGWm8'
-var token = '9O7nuodRovArOdoJwOESz9O4BL4xaX2m'
-var token_secret = 'M0fk8as_3vsanFkMxeTEf8FpduE'
 // yelp request url shit
 var yelp_url = 'http://api.yelp.com'
 // yelp oauth shit
 var oauth = {
-	consumer_key: consumer_key,
-	consumer_secret: consumer_secret,
-	token: token,
-	token_secret: token_secret
+	consumer_key: config.consumer_key,
+	consumer_secret: config.consumer_secret,
+	token: config.token,
+	token_secret: config.token_secret
 }
 
 // cloudant database stuff!
@@ -35,6 +30,7 @@ var password = config.password
 
 // app specific data structures
 var deals = [];
+var bizs = [];
 
 // initialize connection to cloudant
 Cloudant({account:me, password:password}, function(er, cloudant) {
@@ -70,6 +66,7 @@ app.get('/eat', function(req, res) {
 	var town = "boone, nc"
 	var search_path = '/v2/search'
 	var url = yelp_url + search_path + '?term=food&location=' + town
+
 	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
 		var businesses = body.businesses
 		var restaurants = []
@@ -78,34 +75,6 @@ app.get('/eat', function(req, res) {
 			console.log(JSON.stringify(restaurants[i]))
 		}
 
-		// // every time we want to access the cloudant databases we need to use the Cloudant object to authenticate and then access the databases
-		// // in the callback function
-		// Cloudant({account:me, password:password}, function(er, cloudant) {
-		// 	// since we are testing, start by trying to destroy the db we created previously
-		// 	cloudant.db.destroy('test_food_deals', function() {
-		// 		// go ahead and re-create it
-		// 		cloudant.db.create('test_food_deals', function() {
-		// 			// select the database we want to input into
-		// 			var test_food_deals = cloudant.use('test_food_deals')
-		//
-		// 			// insert data into database
-		// 			test_food_deals.insert({restaurants: rest}, 'restaurants', function(err, body, header) {
-		// 				if (err)
-		// 					return console.log('[test_food_details.insert] ' + err.message)
-		//
-		// 				console.log('Inserted restaurant information into cloudant database')
-		// 			})
-		//
-		// 			test_food_deals.insert({locations: r_locations}, 'restaurant_locations', function(err, body, header) {
-		// 				if (err)
-		// 					return console.log('[test_food_details.insert] ' + err.message)
-		//
-		// 				console.log('Inserted restaurant location information into cloudant database')
-		// 			})
-		// 		})
-		// 	})
-		// })
-		// finally, render the eat page
 		res.json(restaurants)
 	})
 })
@@ -114,6 +83,7 @@ app.get('/drink', function(req, res) {
 	var town = "boone, nc"
 	var search_path = '/v2/search'
 	var url = yelp_url + search_path + '?term=food&location=' + town
+
 	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
 		var businesses = body.businesses
 		var rest = []
@@ -123,40 +93,50 @@ app.get('/drink', function(req, res) {
 			r_locations[i] = businesses[i].location.display_address
 			console.log(JSON.stringify(businesses[i].categories))
 		}
-		res.json({rest: rest, r_locations: r_locations})
-	})
-})
 
-app.post('/testapi', function(req, res) {
-	var town = req.body.location
-	var search_path = '/v2/search'
-	var url = yelp_url + search_path + '?term=food&location=' + req.body.location
-	request.get({url:url, oauth:oauth, json:true}, function(error, response, body) {
-		var businesses = body.businesses
-		var info = []
-		for (var i = 0; i < businesses.length; i++) {
-			info[i] = {
-									business_name: businesses[i].name,
-			 					 	phone: businesses[i].phone,
-								 	deals: businesses[i].deals,
-									location: businesses[i].location
-								}
-		}
-		res.end(JSON.stringify(body))
+		res.json({rest: rest, r_locations: r_locations})
 	})
 })
 
 app.get('/deals', function(req, res) {
 	deals = [];
 	Cloudant({account: me, password: password}, function(error, cloudant) {
-		var db = cloudant.db.use('deals');
-		var i = -1;
+		var db = cloudant.db.use('deals')
 		db.list({ include_docs: true }, function (err, body) {
 			body.rows.forEach(function (element) {
 				deals.push(element.doc)
 			})
-			console.log("deals length: " + deals.length)
+			console.log("deals grabbed from db: " + deals.length)
 			res.json(deals)
+		})
+	})
+})
+
+app.get('/deals2', function(req, res) {
+	deals = [];
+	Cloudant({account: me, password: password}, function(error, cloudant) {
+		var db = cloudant.db.use('deals2')
+		db.list({ include_docs: true }, function (err, body) {
+			body.rows.forEach(function (element) {
+				deals.push(element.doc)
+			})
+			console.log("deals grabbed from db: " + deals.length)
+			res.json(deals)
+		})
+	})
+})
+
+app.get('/bizs', function(req, res) {
+	bizs = [];
+	Cloudant({account: me, password: password}, function(error, cloudant) {
+		var db = cloudant.db.use('bizs')
+		db.list({ include_docs: true}, function (err, body) {
+			body.rows.forEach(function (element) {
+				bizs.push(element.doc)
+			})
+			console.log("bizs grabbed from db: " + bizs.length)
+
+			res.json(bizs)
 		})
 	})
 })
