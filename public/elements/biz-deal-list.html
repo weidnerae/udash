@@ -1,47 +1,79 @@
 <link rel="import" href="/polymer/polymer.html">
-<link rel="import" href="/elements/deal-list.html">
-<link rel="import" href="/paper-button/paper-button.html">
 <link rel="import" href="/core-icon/core-icon.html">
 <link rel="import" href="/core-icons/maps-icons.html">
+<link rel="import" href="/paper-checkbox/paper-checkbox.html">
+<!-- our custom element imports -->
+<link rel="import" href="/elements/deal-card.html">
 
 <polymer-element name="biz-deal-list" attributes="day bizs">
   <template>
     <style>
     :host {
       display: block;
-      width: 100%;
+      margin: 0 auto;
     }
-    .biz-header {
-      height: 75px;
-      width: 50%;
+    #bname {
+      font-weight: 300;
+      padding-bottom: 5px;
+      color: rgb(236, 236, 236);
+      text-align: center;
+    }
+    #biz-card {
+      background-color: rgb(155, 89, 182);
+      border-radius: 30px;
+      width: 40%;
+      border: 1px solid rgb(190, 144, 212);
+      margin: 25px;
+      padding-bottom: 15px;
+    }
+    #filters {
+      background-color: rgb(236, 236, 236);
+      box-shadow: 0px 3px 3px rgba(34, 49, 63, .5);
     }
     </style>
 
-    <div>
+    <div id="filters">
+      <paper-checkbox></paper-checkbox> under ten bucks yo
+      <paper-checkbox checked></paper-checkbox> this is good stuff, right?
+    </div>
+
+    <div layout horizontal wrap style="width: 100%">
       <template repeat="{{b in bizs}}">
-        <template if="{{b.deals}}">
-          <paper-button class="biz-header" raised>
-            {{b.name}}
-          </paper-button>
-          <template repeat="{{d in b.deals}}">
-            <template if="{{d.day == day}}">
-              <deal-card>
-                <template if="{{d.drink}}">
-                  <core-icon icon="maps:local-bar"></core-icon>
-                </template>
-                <template if="{{d.eat}}">
-                  <core-icon icon="maps:local-pizza"></core-icon>
-                </template>
-                <span>{{d.text}}</span>
-              </deal-card>
+        <template if="{{containsDay(b.deals)}}">
+          <div id="biz-card">
+            <h2 id="bname">{{b.name}}</h2>
+            <template repeat="{{d in b.deals}}">
+                <deal-card
+                  hidden?="{{day !== d.day}}">
+                  <template if="{{d.drink}}">
+                    <core-icon icon="maps:local-bar"></core-icon>
+                  </template>
+                  <template if="{{d.eat}}">
+                    <core-icon icon="maps:local-pizza"></core-icon>
+                  </template>
+                  <span>{{d.text}}</span>
+                </deal-card>
             </template>
-          </template>
+          </div>
         </template>
       </template>
     </div>
   </template>
 
   <script>
-  Polymer({});
+  Polymer('biz-deal-list', {
+    containsDay: function (input) {
+      var d = this.day;
+      var bool = false;
+      if (input) {
+        input.map(function (element) {
+          if (element.day === d) {
+            bool = true;
+          }
+        });
+        return bool;
+      }
+    }
+  });
   </script>
 </polymer-element>

@@ -8,27 +8,45 @@
     :host {
       display: block;
       position: relative;
-      padding: 20px;
-      margin: 2px 5px 2px 5px;
-      text-align: left !important;
+      margin: 5px;
+      width: 100%;
     }
     .card {
-      background-color: white;
+      background-color: rgb(236, 236, 236);
+      width: 80%;
+      border-radius: 10px;
+      border: 1px solid rgb(210, 215, 211);
+      padding: 15px;
+      margin: 0 auto;
     }
-    paper-button {
-      width: 400px;
+    polyfill-next-selector { content: '.card span'; }
+    .card ::content span {
+      text-align: left;
+      color: rgb(34, 49, 63);
+    }
+    td {
+      padding: 0 5px;
     }
     </style>
 
 
     <div class="card">
-      <paper-button raised>
-        <content select="core-icon"></content>
-        <content select="span"></content>
-      </paper-button>
+      <table>
+        <tr>
+          <td>
+            <content select="core-icon"></content>
+          </td>
+          <td>
+            <content select="span"></content>
+          </td>
+        </tr>
+      </table>
     </div>
   </template>
   <script>
-  Polymer({});
+  Polymer('deal-card', {
+    onCreated: function() {
+    }
+  });
   </script>
 </polymer-element>

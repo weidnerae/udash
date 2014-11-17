@@ -10,39 +10,40 @@
   <template>
     <style>
     :host {
-
     }
     paper-tabs::shadow #selectionBar {
-      background-color: yellow;
+      background-color: rgb(155, 89, 182);
     }
     paper-tabs paper-tab::shadow #ink {
-      color: yellow;
+      color: rgb(190, 144, 212);
+    }
+    paper-tabs {
+      background-color: rgb(236, 236, 236);
     }
     </style>
 
     <biz-service bizs="{{bizs}}"></biz-service>
 
-    <div>
-      <paper-tabs selected="{{selected}}">
-        <paper-tab onClick="{{loadSun}}">sunday</paper-tab>
-        <paper-tab onClick="{{loadMon}}">monday</paper-tab>
-        <paper-tab onClick="{{loadTue}}">tuesday</paper-tab>
-        <paper-tab onClick="{{loadWed}}">wednesday</paper-tab>
-        <paper-tab onClick="{{loadThu}}">thursday</paper-tab>
-        <paper-tab onClick="{{loadFri}}">friday</paper-tab>
-        <paper-tab onClick="{{loadSat}}">saturday</paper-tab>
-      </paper-tabs>
+    <paper-tabs selected="{{selected}}">
+      <paper-tab onClick="{{loadSun}}">sunday</paper-tab>
+      <paper-tab onClick="{{loadMon}}">monday</paper-tab>
+      <paper-tab onClick="{{loadTue}}">tuesday</paper-tab>
+      <paper-tab onClick="{{loadWed}}">wednesday</paper-tab>
+      <paper-tab onClick="{{loadThu}}">thursday</paper-tab>
+      <paper-tab onClick="{{loadFri}}">friday</paper-tab>
+      <paper-tab onClick="{{loadSat}}">saturday</paper-tab>
+    </paper-tabs>
 
-      <core-pages selected="{{selected}}">
-        <div><biz-deal-list day="Sunday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Monday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Tuesday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Wednesday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Thursday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Friday" bizs={{bizs}}></biz-deal-list></div>
-        <div><biz-deal-list day="Saturday" bizs={{bizs}}></biz-deal-list></div>
-      </core-pages>
-    </div>
+    <core-pages selected="{{selected}}">
+      <div><biz-deal-list day="Sunday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Monday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Tuesday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Wednesday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Thursday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Friday" bizs={{bizs}}></biz-deal-list></div>
+      <div><biz-deal-list day="Saturday" bizs={{bizs}}></biz-deal-list></div>
+    </core-pages>
+
   </template>
 
   <script>

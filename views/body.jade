@@ -11,10 +11,10 @@ body(unresolved)
   link(rel="import", href="/paper-item/paper-item.html")
   link(rel="import", href="/elements/deals-view.html")
   core-drawer-panel#nav
-    core-header-panel(drawer)
+    core-header-panel(drawer)#navdrawer
       core-toolbar#navheader
         span udash
-      core-menu
+      core-menu#navmenu
         paper-item#deals(label="deals", icon="maps:local-pizza")
         paper-item#places(label="places", icon="maps:local-bar")
         paper-item#explore(label="explore", icon="maps:map")

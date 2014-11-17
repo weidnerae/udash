@@ -1,22 +1,37 @@
 body {
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  background-image: url("/images/restaurant_icons.png");
+}
 
-core-header-panel {
-  background: white; }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
 
 core-toolbar {
-  background-color: black;
-  color: yellow; }
+  background-color: rgb(155, 89, 182);
+  color: rgb(236, 236, 236);
+}
 
 #navheader {
-  background-color: yellow; }
-  #navheader span {
-    width: 100%;
-    text-align: right;
-    color: black; }
-
-#view {
-  padding: 20px; }
+  background-color: rgb(190, 144, 212);
+}
+#navheader span {
+  width: 100%;
+  text-align: right;
+  color: rgb(236, 236, 236);
+}
+#navdrawer {
+  background-image: url("/images/tweed.png");
+  height: 100%;
+  width: 100%;
+  color: rgb(236, 236, 236);
+}
+#mainheader span {
+  font-weight: 300;
+}
+#navmenu paper-item {
+  padding: 40px 20px;
+}
 
 /* drawer is always visible on a wide screen
    so menu button isn't required */
