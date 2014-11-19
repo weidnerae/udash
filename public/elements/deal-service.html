@@ -1,5 +1,6 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/core-ajax/core-ajax.html">
+
 <polymer-element name="deal-service" attributes="deals">
   <template>
     <style>
@@ -23,7 +24,6 @@
       // Make a copy of the loaded data
       this.deals = this.$.ajax.response;
       console.log("got deals from /deals");
-      console.log(JSON.stringify(this.deals));
     }
   });
   </script>

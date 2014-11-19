@@ -1,6 +1,7 @@
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/core-icon/core-icon.html">
 <link rel="import" href="/core-icons/maps-icons.html">
+<link rel="import" href="/core-icons/editor-icons.html">
 <link rel="import" href="/paper-checkbox/paper-checkbox.html">
 <!-- our custom element imports -->
 <link rel="import" href="/elements/deal-card.html">
@@ -14,13 +15,16 @@
     }
     #bname {
       font-weight: 300;
-      padding-bottom: 5px;
-      color: rgb(236, 236, 236);
+      padding: 5px 0;
+      color: rgb(34, 49, 63);
       text-align: center;
+      border-bottom: 1px solid rgb(190, 144, 212);
+      background-color: rgb(236, 236, 236);
+      font-size: 24px;
     }
     #biz-card {
       background-color: rgb(155, 89, 182);
-      border-radius: 30px;
+      /*border-radius: 30px;*/
       width: 40%;
       border: 1px solid rgb(190, 144, 212);
       margin: 25px;
@@ -41,7 +45,9 @@
       <template repeat="{{b in bizs}}">
         <template if="{{containsDay(b.deals)}}">
           <div id="biz-card">
-            <h2 id="bname">{{b.name}}</h2>
+            <div id="bname">
+              <span>{{b.name}}</span>
+            </div>
             <template repeat="{{d in b.deals}}">
                 <deal-card
                   hidden?="{{day !== d.day}}">
@@ -50,6 +56,9 @@
                   </template>
                   <template if="{{d.eat}}">
                     <core-icon icon="maps:local-pizza"></core-icon>
+                  </template>
+                  <template if="{{!d.eat && !d.drink}}">
+                    <core-icon icon="editor:attach-money"></core-icon>
                   </template>
                   <span>{{d.text}}</span>
                 </deal-card>
