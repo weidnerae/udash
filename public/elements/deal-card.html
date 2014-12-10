@@ -1,11 +1,10 @@
 <link rel="import" href="/polymer/polymer.html">
-<link rel="import" href="/paper-button/paper-button.html">
 <link rel="import" href="/core-icon/core-icon.html">
 
 <polymer-element name="deal-card">
   <template>
     <style>
-    :host {
+    /*:host {
       display: block;
       position: relative;
       margin: 5px;
@@ -23,29 +22,41 @@
     .card ::content span {
       text-align: left;
       color: rgb(34, 49, 63);
-    }
+    }*/
     td {
       padding: 0 5px;
     }
     </style>
 
 
-    <div class="card">
-      <table>
-        <tr>
-          <td>
-            <content select="core-icon"></content>
-          </td>
-          <td>
-            <content select="span"></content>
-          </td>
-        </tr>
-      </table>
-    </div>
+    <tr>
+      <td>
+        <span id="dealtext"></span>
+      </td>
+      <td>
+        <span id="dealplace"></span>
+      </td>
+      <td>
+        <core-icon id="dealicon"></core-icon>
+        <span id="dealtype" style="display: none"></span>
+      </td>
+      <td>
+        <span id="dealprice"></span>
+      </td>
+    </tr>
   </template>
   <script>
   Polymer('deal-card', {
     onCreated: function() {
+    },
+    attached: function() {
+      this.async(function() {
+        console.log(this.$);
+        var obj = this.$;
+        this.children.forEach(function (e) {
+          //obj[e.id] = e;
+        });
+      });
     }
   });
   </script>

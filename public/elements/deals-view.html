@@ -6,6 +6,7 @@
 <link rel="import" href="/elements/deal-service.html">
 <link rel="import" href="/elements/biz-service.html">
 <link rel="import" href="/elements/biz-deal-list.html">
+<link rel="import" href="/elements/deal-table.html">
 
 <polymer-element name="deals-view" attributes="selected">
   <template>
@@ -25,7 +26,9 @@
 
     <biz-service bizs="{{bizs}}"></biz-service>
 
-    <paper-tabs selected="{{selected}}">
+    <deal-table day="Sunday" bizs={{bizs}}></deal-table>
+
+    <!-- <paper-tabs selected="{{selected}}">
       <paper-tab onClick="{{loadSun}}">SUNDAY</paper-tab>
       <paper-tab onClick="{{loadMon}}">MONDAY</paper-tab>
       <paper-tab onClick="{{loadTue}}">TUESDAY</paper-tab>
@@ -43,8 +46,8 @@
       <div><biz-deal-list day="Thursday" bizs={{bizs}}></biz-deal-list></div>
       <div><biz-deal-list day="Friday" bizs={{bizs}}></biz-deal-list></div>
       <div><biz-deal-list day="Saturday" bizs={{bizs}}></biz-deal-list></div>
-    </core-pages>
-    
+    </core-pages> -->
+
 
   </template>
 
