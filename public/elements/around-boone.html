@@ -75,11 +75,11 @@
   Polymer('around-boone', {
     loadDeals: function(e) {
       console.log("changing view...");
-      this.$.view.innerHTML = document.createElement('deals-view');
+      this.$.view.innerHTML = "<deals-view></deals-view>";
     },
     loadBiz: function(e) {
       console.log("changing view...");
-      this.$.view.innerHTML = document.createElement('biz-view');
+      this.$.view.innerHTML = "<biz-view></biz-view>";
     }
   });
   </script>
