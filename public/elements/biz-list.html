@@ -13,7 +13,6 @@
       display: block;
       margin: 0 auto;
       color: rgb(236, 236, 236);
-      padding: 10px;
     }
     #bname {
       font-weight: 300;
@@ -30,7 +29,7 @@
       width: 90%;
       border: 1px solid rgb(190, 144, 212);
       margin: 25px;
-      padding-bottom: 15px;
+      padding: 15px;
     }
     #filters {
       background-color: rgb(236, 236, 236);
@@ -50,9 +49,11 @@
           <div id="phone">
             <b>Phone: </b><span>{{b.phone}}</span>
           </div>
-          <div id="url">
-            <b>Website: </b><span>{{b.url}}</span>
-          </div>
+          <template if="{{b.url}}">
+            <div id="url">
+              <b>Website: </b><span>{{b.url}}</span>
+            </div>
+          </template>
           <template if="{{b.hours}}">
             <div><b>Hours: </b></div>
             <template repeat="{{h in b.hours}}">
