@@ -89,6 +89,10 @@
     loadWiki: function(e) {
       console.log("changing view...");
       this.$.view.innerHTML = "<iframe style='height:2000px;width:100%;' src='http://udash.tiddlyspot.com/index.html'></iframe>";
+    },
+    loadEvents: function(e) {
+      console.log("changing view...");
+      this.$.view.innerHTML = "<events-view></events-view>";
     }
   });
   </script>

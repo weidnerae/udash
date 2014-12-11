@@ -1,0 +1,27 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/core-icon/core-icon.html">
+<link rel="import" href="/core-icons/maps-icons.html">
+<link rel="import" href="/core-icons/editor-icons.html">
+<link rel="import" href="/paper-checkbox/paper-checkbox.html">
+
+<polymer-element name="events-list" attributes="events">
+  <template>
+  <style>
+  :host {
+    display: block;
+    margin: 0 auto;
+    color: rgb(236, 236, 236);
+  }
+  </style>
+
+  <div style="width: 100%">
+    <template repeat="{{e in events}}">
+      <span>{{e.day}} : {{e.time}} - {{e.text}}
+    </template>
+  </div>
+</template>
+
+<script>
+  Polymer('events-list', { });
+</script>
+</polymer-element>
