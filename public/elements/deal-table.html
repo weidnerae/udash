@@ -36,31 +36,33 @@
         </tr>
         <template repeat="{{b in bizs}}">
           <template repeat="{{d in b.deals}}">
-            <tr>
-              <td>
-                <span id="dealplace">{{d.place}}</span>
-              </td>
-              <td>
-                <span id="dealtext">{{d.text}}</span>
-              </td>
-              <td>
-                <template if="{{d.drink}}">
-                  <core-icon id="dealicon" icon="maps:local-bar"></core-icon>
-                  <span id="dealtype" style="display: none">drink</span>
-                </template>
-                <template if="{{d.eat}}">
-                  <core-icon id="dealicon" icon="maps:local-pizza"></core-icon>
-                  <span id="dealtype" style="display: none">eat</span>
-                </template>
-                <template if="{{!d.eat && !d.drink}}">
-                  <core-icon id="dealicon" icon="editor:attach-money"></core-icon>
-                  <span id="dealtype" style="display: none">non</span>
-                </template>
-              </td>
-              <td>
-                <span id="dealprice">{{d.price}}</span>
-              </td>
-            </tr>
+            <template if="{{day == d.day}}"
+              <tr>
+                <td>
+                  <span id="dealplace">{{d.place}}</span>
+                </td>
+                <td>
+                  <span id="dealtext">{{d.text}}</span>
+                </td>
+                <td>
+                  <template if="{{d.drink}}">
+                    <core-icon id="dealicon" icon="maps:local-bar"></core-icon>
+                    <span id="dealtype" style="display: none">drink</span>
+                  </template>
+                  <template if="{{d.eat}}">
+                    <core-icon id="dealicon" icon="maps:local-pizza"></core-icon>
+                    <span id="dealtype" style="display: none">eat</span>
+                  </template>
+                  <template if="{{!d.eat && !d.drink}}">
+                    <core-icon id="dealicon" icon="editor:attach-money"></core-icon>
+                    <span id="dealtype" style="display: none">non</span>
+                  </template>
+                </td>
+                <td>
+                  <span id="dealprice">{{d.price}}</span>
+                </td>
+              </tr>
+            </template>
           </template>
         </template>
       </table>
