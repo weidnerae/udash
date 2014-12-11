@@ -22,10 +22,29 @@
   }
   </style>
 
+  <h1>Local Events During the Week of 8/8 - 8/14</h1>
+
   <div style="width: 100%">
-    <template repeat="{{e in events}}">
-      <div id="event"><span id="dt">{{e.day}} : {{e.time}}</span> - {{e.text}}</div>
-    </template>
+    <table>
+      <th>
+        <td>Day</td>
+        <td>Time</td>
+        <td>Event</td>
+      </th>
+      <template repeat="{{e in events}}">
+        <tr id="event">
+          <td id="dt">
+            {{e.day}}
+          </td>
+          <td id="dt">
+            {{e.time}}
+          </td>
+          <td>
+            {{e.text}}
+          </td>
+        </tr>
+      </template>
+    </table>
   </div>
 </template>
 
