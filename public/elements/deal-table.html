@@ -24,16 +24,18 @@
 
     <div layout horizontal wrap style="width: 100%">
       <table>
-        <th>
-          <td> Location
-          </td>
-          <td> Deal
-          </td>
-          <td> Type
-          </td>
-          <td> Price
-          </td>
-        </th>
+        <tr>
+          <th>
+            <td> Location
+            </td>
+            <td> Deal
+            </td>
+            <td> Type
+            </td>
+            <td> Price
+            </td>
+          </th>
+        </tr>
         <template repeat="{{b in bizs}}">
           <template repeat="{{d in b.deals}}">
             <tr>
