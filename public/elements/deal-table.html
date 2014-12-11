@@ -36,7 +36,7 @@
         </tr>
         <template repeat="{{b in bizs}}">
           <template repeat="{{d in b.deals}}">
-            <template if="{{day == d.day}}"
+            <template if="{{day == d.day}}">
               <tr>
                 <td>
                   <span id="dealplace">{{d.place}}</span>
