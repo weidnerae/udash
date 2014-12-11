@@ -3,8 +3,6 @@
 <link rel="import" href="/core-icons/maps-icons.html">
 <link rel="import" href="/core-icons/editor-icons.html">
 <link rel="import" href="/paper-checkbox/paper-checkbox.html">
-<!-- our custom element imports -->
-<link rel="import" href="/elements/deal-card.html">
 
 <polymer-element name="deal-table" attributes="day bizs">
   <template>
@@ -25,46 +23,41 @@
     </div>
 
     <div layout horizontal wrap style="width: 100%">
-      <template repeat="{{b in bizs}}">
-        <table>
+      <table>
+        <template repeat="{{b in bizs}}">
           <template repeat="{{d in b.deals}}">
-            <deal-card>
-              <span id="dealtext">{{d.text}}</span>
-              <template if="{{d.drink}}">
-                <core-icon id="dealicon" icon="maps:local-bar"></core-icon>
-                <span id="dealtype">drink</span>
-              </template>
-              <template if="{{d.eat}}">
-                <core-icon id="dealicon" icon="maps:local-pizza"></core-icon>
-                <span id="dealtype">eat</span>
-              </template>
-              <template if="{{!d.eat && !d.drink}}">
-                <core-icon id="dealicon" icon="editor:attach-money"></core-icon>
-                <span id="dealtype">non</span>
-              </template>
-              <span id="dealplace">{{d.place}}</span>
-              <span id="dealprice">{{d.price}}</span>
-            </deal-card>
+            <tr>
+              <td>
+                <span id="dealtext">{{d.text}}</span>
+              </td>
+              <td>
+                <template if="{{d.drink}}">
+                  <core-icon id="dealicon" icon="maps:local-bar"></core-icon>
+                  <span id="dealtype">drink</span>
+                </template>
+                <template if="{{d.eat}}">
+                  <core-icon id="dealicon" icon="maps:local-pizza"></core-icon>
+                  <span id="dealtype">eat</span>
+                </template>
+                <template if="{{!d.eat && !d.drink}}">
+                  <core-icon id="dealicon" icon="editor:attach-money"></core-icon>
+                  <span id="dealtype">non</span>
+                </template>
+              </td>
+              <td>
+                <span id="dealplace">{{d.place}}</span>
+              </td>
+              <td>
+                <span id="dealprice">{{d.price}}</span>
+              </td>
+            </tr>
           </template>
-        </table>
-      </template>
+        </template>
+      </table>
     </div>
   </template>
 
   <script>
-  Polymer('deal-table', {
-    containsDay: function (input) {
-      var d = this.day;
-      var bool = false;
-      if (input) {
-        input.map(function (element) {
-          if (element.day === d) {
-            bool = true;
-          }
-        });
-        return bool;
-      }
-    }
-  });
+  Polymer('deal-table', { });
   </script>
 </polymer-element>
