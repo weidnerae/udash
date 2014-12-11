@@ -19,7 +19,7 @@
       padding: 5px 0;
       color: rgb(34, 49, 63);
       text-align: center;
-      border-bottom: 1px solid rgb(190, 144, 212);
+      border: 1px solid rgb(190, 144, 212);
       background-color: rgb(236, 236, 236);
       font-size: 24px;
     }
@@ -61,7 +61,7 @@
             </div>
             <div>
               <template if="{{b.hours}}">
-                <div><b>Hours: </b></div>
+                <div id="bname"><b>Hours: </b></div>
                 <template repeat="{{h in b.hours}}">
                   <deal-card>
                     <span>{{h.day}} - {{h.hours}}</span>
@@ -71,7 +71,7 @@
             </div>
             <div>
               <template if="{{b.events}}">
-                <div><b>Events: </b></div>
+                <div id="bname"><b>Events: </b></div>
                 <template repeat="{{e in b.events}}">
                   <deal-card>
                     <span>{{e.day}} - {{e.text}}</span>
@@ -81,7 +81,7 @@
             </div>
             <div>
               <template if="{{b.deals}}">
-                <div><b>Deals: </b></div>
+                <div id="bname"><b>Deals: </b></div>
                 <template repeat="{{d in b.deals}}">
                   <deal-card>
                     <template if="{{d.drink}}">
