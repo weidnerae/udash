@@ -63,7 +63,9 @@
               <template if="{{b.hours}}">
                 <div><b>Hours: </b></div>
                 <template repeat="{{h in b.hours}}">
-
+                  <deal-card>
+                    <span>{{h.day}} - {{h.hours}}</span>
+                  </deal-card>
                 </template>
               </template>
             </div>
@@ -71,7 +73,9 @@
               <template if="{{b.events}}">
                 <div><b>Events: </b></div>
                 <template repeat="{{e in b.events}}">
-
+                  <deal-card>
+                    <span>{{e.day}} - {{e.text}}</span>
+                  </deal-card>
                 </template>
               </template>
             </div>
