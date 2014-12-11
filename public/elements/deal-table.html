@@ -25,15 +25,7 @@
     <div layout horizontal wrap style="width: 100%">
       <table>
         <template repeat="{{b in bizs}}">
-          <tr>
-            <td>
-              <span> {{b.name}} </span>
-            </td>
-            <td>
-              <span> {{b.deals.length}} </span>
-            </td>
-          </tr>
-          <!-- <template repeat="{{d in b.deals}}">
+          <template repeat="{{d in b.deals}}">
             <tr>
               <td>
                 <span id="dealtext">{{d.text}}</span>
@@ -59,7 +51,7 @@
                 <span id="dealprice">{{d.price}}</span>
               </td>
             </tr>
-          </template> -->
+          </template>
         </template>
       </table>
     </div>
