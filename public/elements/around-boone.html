@@ -9,6 +9,7 @@
 <link rel="import", href="/paper-icon-button/paper-icon-button.html">
 <link rel="import", href="/paper-item/paper-item.html">
 <link rel="import", href="/elements/deals-view.html">
+<link rel="import", href="/elements/biz-view.html">
 
 <polymer-element name="around-boone">
   <template>
@@ -52,8 +53,8 @@
           <span> udash </span>
         </core-toolbar>
         <core-menu id="navmenu">
-          <paper-item id="deals" label="deals", icon="maps:local-pizza"></paper-item>
-          <paper-item id="places" label="places", icon="maps:local-bar"></paper-item>
+          <paper-item id="deals" label="deals", icon="maps:local-pizza" on-click={{loadDeals}}></paper-item>
+          <paper-item id="places" label="places", icon="maps:local-bar" on-click={{loadBiz}}></paper-item>
           <paper-item id="explore" label="explore", icon="maps:map"></paper-item>
           <paper-item id="events" label="events", icon="due-date"></paper-item>
         </core-menu>
@@ -71,6 +72,15 @@
 
   </template>
   <script>
-  Polymer({});
+  Polymer('around-boone', {
+    loadDeals: function(e) {
+      console.log("changing view...");
+      this.$.view.innerHTML = document.createElement('deals-view');
+    },
+    loadBiz: function(e) {
+      console.log("changing view...");
+      this.$.view.innerHTML = document.createElement('biz-view');
+    }
+  });
   </script>
 </polymer-element>
