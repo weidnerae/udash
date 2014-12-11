@@ -43,31 +43,30 @@
           <div id="bname">
             <span>{{b.name}}</span>
           </div>
-          <div>Address:</div>
           <div id="address">
-            <span>{{b.address}}</span>
+            <b>Address: </b><span>{{b.address}}</span>
           </div>
-          <div>Phone:</div>
           <div id="phone">
-            <span>{{b.phone}}</span>
+            <b>Phone: </b><span>{{b.phone}}</span>
           </div>
-          <div>Website:</div>
           <div id="url">
-            <span>{{b.url}}</span>
+            <b>Website: </b><span>{{b.url}}</span>
           </div>
           <div>Hours:</div>
           <div>Events:</div>
-          <div>Deals:</div>
-          <template repeat="{{d in b.deals}}">
-            <deal-card>
-              <template if="{{d.drink}}">
-                <core-icon icon="maps:local-bar"></core-icon>
-              </template>
-              <template if="{{d.eat}}">
-                <core-icon icon="maps:local-pizza"></core-icon>
-              </template>
-              <span>{{d.text}}</span>
-            </deal-card>
+          <template if="{{b.deals}}">
+            <div><b>Deals: </b></div>
+            <template repeat="{{d in b.deals}}">
+              <deal-card>
+                <template if="{{d.drink}}">
+                  <core-icon icon="maps:local-bar"></core-icon>
+                </template>
+                <template if="{{d.eat}}">
+                  <core-icon icon="maps:local-pizza"></core-icon>
+                </template>
+                <span>{{d.text}}</span>
+              </deal-card>
+            </template>
           </template>
         </div>
       </template>
