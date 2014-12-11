@@ -1,0 +1,26 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/paper-tabs/paper-tab.html">
+<link rel="import" href="/paper-tabs/paper-tabs.html">
+<link rel="import" href="/core-pages/core-pages.html">
+<!-- import our own elements -->
+<link rel="import" href="/elements/biz-service.html">
+<link rel="import" href="/elements/biz-list.html">
+
+<polymer-element name="deals-view" attributes="selected">
+  <template>
+  <style>
+  :host {
+  }
+  </style>
+
+  <biz-service bizs="{{bizs}}"></biz-service>
+
+  <biz-list bizs={{bizs}}></biz-list>
+
+
+  </template>
+
+  <script>
+    Polymer('biz-view', { });
+  </script>
+</polymer-element>

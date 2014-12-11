@@ -1,0 +1,73 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/core-icon/core-icon.html">
+<link rel="import" href="/core-icons/maps-icons.html">
+<link rel="import" href="/core-icons/editor-icons.html">
+<link rel="import" href="/paper-checkbox/paper-checkbox.html">
+<!-- our custom element imports -->
+<link rel="import" href="/elements/deal-card.html">
+
+<polymer-element name="biz-list" attributes="bizs">
+  <template>
+    <style>
+    :host {
+      display: block;
+      margin: 0 auto;
+    }
+    #bname {
+      font-weight: 300;
+      padding: 5px 0;
+      color: rgb(34, 49, 63);
+      text-align: center;
+      border-bottom: 1px solid rgb(190, 144, 212);
+      background-color: rgb(236, 236, 236);
+      font-size: 24px;
+    }
+    #biz-card {
+      background-color: rgb(155, 89, 182);
+      /*border-radius: 30px;*/
+      width: 40%;
+      border: 1px solid rgb(190, 144, 212);
+      margin: 25px;
+      padding-bottom: 15px;
+    }
+    #filters {
+      background-color: rgb(236, 236, 236);
+      box-shadow: 0px 3px 3px rgba(34, 49, 63, .5);
+    }
+    </style>
+
+    <div layout horizontal wrap style="width: 100%">
+      <template repeat="{{b in bizs}}">
+        <div id="biz-card">
+          <div id="bname">
+            <span>{{b.name}}</span>
+          </div>
+          <div id="address">
+            <span>{{b.address}}</span>
+          </div>
+          <div id="phone">
+            <span>{{b.phone}}</span>
+          </div>
+          <div id="url">
+            <span>{{b.url}}</span>
+          </div>
+          <template repeat="{{d in b.deals}}">
+            <deal-card>
+              <template if="{{d.drink}}">
+                <core-icon icon="maps:local-bar"></core-icon>
+              </template>
+              <template if="{{d.eat}}">
+                <core-icon icon="maps:local-pizza"></core-icon>
+              </template>
+              <span>{{d.text}}</span>
+            </deal-card>
+          </template>
+        </div>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer('biz-list', { });
+  </script>
+</polymer-element>
