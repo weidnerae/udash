@@ -29,6 +29,9 @@
       width: 90%;
       border: 1px solid rgb(190, 144, 212);
       margin: 25px;
+      padding-bottom: 15px;
+    }
+    #biz-body {
       padding: 15px;
     }
     #filters {
@@ -43,43 +46,53 @@
           <div id="bname">
             <span>{{b.name}}</span>
           </div>
-          <div id="address">
-            <b>Address: </b><span>{{b.address}}</span>
-          </div>
-          <div id="phone">
-            <b>Phone: </b><span>{{b.phone}}</span>
-          </div>
-          <template if="{{b.url}}">
-            <div id="url">
-              <b>Website: </b><span>{{b.url}}</span>
+          <div id="biz-body">
+            <div>
+              <div id="address">
+                <b>Address: </b><span>{{b.address}}</span>
+              </div>
+              <div id="phone">
+                <b>Phone: </b><span>{{b.phone}}</span>
+              </div>
+              <template if="{{b.url}}">
+                <div id="url">
+                  <b>Website: </b><span>{{b.url}}</span>
+                </div>
+              </template>
             </div>
-          </template>
-          <template if="{{b.hours}}">
-            <div><b>Hours: </b></div>
-            <template repeat="{{h in b.hours}}">
+            <div>
+              <template if="{{b.hours}}">
+                <div><b>Hours: </b></div>
+                <template repeat="{{h in b.hours}}">
 
-            </template>
-          </template>
-          <template if="{{b.events}}">
-            <div><b>Events: </b></div>
-            <template repeat="{{e in b.events}}">
+                </template>
+              </template>
+            </div>
+            <div>
+              <template if="{{b.events}}">
+                <div><b>Events: </b></div>
+                <template repeat="{{e in b.events}}">
 
-            </template>
-          </template>
-          <template if="{{b.deals}}">
-            <div><b>Deals: </b></div>
-            <template repeat="{{d in b.deals}}">
-              <deal-card>
-                <template if="{{d.drink}}">
-                  <core-icon icon="maps:local-bar"></core-icon>
                 </template>
-                <template if="{{d.eat}}">
-                  <core-icon icon="maps:local-pizza"></core-icon>
+              </template>
+            </div>
+            <div>
+              <template if="{{b.deals}}">
+                <div><b>Deals: </b></div>
+                <template repeat="{{d in b.deals}}">
+                  <deal-card>
+                    <template if="{{d.drink}}">
+                      <core-icon icon="maps:local-bar"></core-icon>
+                    </template>
+                    <template if="{{d.eat}}">
+                      <core-icon icon="maps:local-pizza"></core-icon>
+                    </template>
+                    <span>{{d.text}}</span>
+                  </deal-card>
                 </template>
-                <span>{{d.text}}</span>
-              </deal-card>
-            </template>
-          </template>
+              </template>
+            </div>
+          </div>
         </div>
       </template>
     </div>
