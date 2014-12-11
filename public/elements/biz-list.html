@@ -46,56 +46,49 @@
             <span>{{b.name}}</span>
           </div>
           <div id="biz-body">
-            <div>
-              <div id="address">
-                <b>Address: </b><span>{{b.address}}</span>
+            <div id="address">
+              <b>Address: </b><span>{{b.address}}</span>
+            </div>
+            <div id="phone">
+              <b>Phone: </b><span>{{b.phone}}</span>
+            </div>
+            <template if="{{b.url}}">
+              <div id="url">
+                <b>Website: </b><span>{{b.url}}</span>
               </div>
-              <div id="phone">
-                <b>Phone: </b><span>{{b.phone}}</span>
-              </div>
-              <template if="{{b.url}}">
-                <div id="url">
-                  <b>Website: </b><span>{{b.url}}</span>
-                </div>
-              </template>
-            </div>
-            <div>
-              <template if="{{b.hours}}">
-                <div id="bname"><b>Hours: </b></div>
-                <template repeat="{{h in b.hours}}">
-                  <deal-card>
-                    <span>{{h.day}} - {{h.hours}}</span>
-                  </deal-card>
-                </template>
-              </template>
-            </div>
-            <div>
-              <template if="{{b.events}}">
-                <div id="bname"><b>Events: </b></div>
-                <template repeat="{{e in b.events}}">
-                  <deal-card>
-                    <span>{{e.day}} - {{e.text}}</span>
-                  </deal-card>
-                </template>
-              </template>
-            </div>
-            <div>
-              <template if="{{b.deals}}">
-                <div id="bname"><b>Deals: </b></div>
-                <template repeat="{{d in b.deals}}">
-                  <deal-card>
-                    <template if="{{d.drink}}">
-                      <core-icon icon="maps:local-bar"></core-icon>
-                    </template>
-                    <template if="{{d.eat}}">
-                      <core-icon icon="maps:local-pizza"></core-icon>
-                    </template>
-                    <span>{{d.text}}</span>
-                  </deal-card>
-                </template>
-              </template>
-            </div>
+            </template>
           </div>
+          <template if="{{b.hours}}">
+            <div id="bname"><b>Hours: </b></div>
+            <template repeat="{{h in b.hours}}">
+              <deal-card>
+                <span>{{h.day}} - {{h.hours}}</span>
+              </deal-card>
+            </template>
+          </template>
+          <template if="{{b.events}}">
+            <div id="bname"><b>Events: </b></div>
+            <template repeat="{{e in b.events}}">
+              <deal-card>
+                <span>{{e.day}} - {{e.text}}</span>
+              </deal-card>
+            </template>
+          </template>
+
+          <template if="{{b.deals}}">
+            <div id="bname"><b>Deals: </b></div>
+            <template repeat="{{d in b.deals}}">
+              <deal-card>
+                <template if="{{d.drink}}">
+                  <core-icon icon="maps:local-bar"></core-icon>
+                </template>
+                <template if="{{d.eat}}">
+                  <core-icon icon="maps:local-pizza"></core-icon>
+                </template>
+                <span>{{d.text}}</span>
+              </deal-card>
+            </template>
+          </template>
         </div>
       </template>
     </div>
