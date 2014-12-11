@@ -24,28 +24,38 @@
 
     <div layout horizontal wrap style="width: 100%">
       <table>
+        <th>
+          <td> Location
+          </td>
+          <td> Deal
+          </td>
+          <td> Type
+          </td>
+          <td> Price
+          </td>
+        </th>
         <template repeat="{{b in bizs}}">
           <template repeat="{{d in b.deals}}">
             <tr>
+              <td>
+                <span id="dealplace">{{d.place}}</span>
+              </td>
               <td>
                 <span id="dealtext">{{d.text}}</span>
               </td>
               <td>
                 <template if="{{d.drink}}">
                   <core-icon id="dealicon" icon="maps:local-bar"></core-icon>
-                  <span id="dealtype">drink</span>
+                  <span id="dealtype" style="display: none">drink</span>
                 </template>
                 <template if="{{d.eat}}">
                   <core-icon id="dealicon" icon="maps:local-pizza"></core-icon>
-                  <span id="dealtype">eat</span>
+                  <span id="dealtype" style="display: none">eat</span>
                 </template>
                 <template if="{{!d.eat && !d.drink}}">
                   <core-icon id="dealicon" icon="editor:attach-money"></core-icon>
-                  <span id="dealtype">non</span>
+                  <span id="dealtype" style="display: none">non</span>
                 </template>
-              </td>
-              <td>
-                <span id="dealplace">{{d.place}}</span>
               </td>
               <td>
                 <span id="dealprice">{{d.price}}</span>
