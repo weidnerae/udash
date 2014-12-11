@@ -2,6 +2,7 @@ var express  = require('express')
 var request  = require('request')
 var config   = require('./config.json')
 var nano     = require('nano')('http://localhost:5984')
+var calendar = require('./calendar')
 
 var oneDay   = 1000 * 60 * 60 * 24;
 
@@ -43,6 +44,12 @@ app.get('/bizs', function(req, res) {
 		})
 		console.log("bizs grabbed from db: " + bizs.length)
 		res.json(bizs)
+	})
+})
+
+app.get('/events', function(req, res) {
+	calendar(function (err, body) {
+		res.json(body)
 	})
 })
 
