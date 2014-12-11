@@ -55,8 +55,9 @@
         <core-menu id="navmenu">
           <paper-item id="deals" label="deals", icon="maps:local-pizza" on-click={{loadDeals}}></paper-item>
           <paper-item id="places" label="places", icon="maps:local-bar" on-click={{loadBiz}}></paper-item>
-          <paper-item id="explore" label="explore", icon="maps:map"></paper-item>
+          <paper-item id="explore" label="explore", icon="maps:map" on-click={{loadWiki}}></paper-item>
           <paper-item id="events" label="events", icon="due-date"></paper-item>
+          <paper-item id="beeper" label="beeper", icon="maps:directions-car" on-click={{loadBeeper}}></paper-item>
         </core-menu>
       </core-header-panel>
       <core-header-panel main>
@@ -80,6 +81,14 @@
     loadBiz: function(e) {
       console.log("changing view...");
       this.$.view.innerHTML = "<biz-view></biz-view>";
+    },
+    loadBeeper: function(e) {
+      console.log("changing view...");
+      this.$.view.innerHTML = "<iframe style='height:2000px;width:100%;' src='https://www.wallflux.com/iframe/151586148240699'></iframe>";
+    },
+    loadWiki: function(e) {
+      console.log("changing view...");
+      this.$.view.innerHTML = "<iframe style='height:2000px;width:100%;' src='http://udash.tiddlyspot.com/index.html'></iframe>";
     }
   });
   </script>
